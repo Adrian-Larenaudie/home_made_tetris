@@ -1,4 +1,6 @@
 /* on veut des cases sans bordure avec des colonne visibles pour l'utilisateur */
+import { game } from '../game.js';
+import { piece } from './piece.js';
 
 export const grid = {
     /* ------------------ PROPRIETES ---------------- */
@@ -30,6 +32,14 @@ export const grid = {
                 }
             };
         };
+        //* on va vérifier si des pièces ont été placées
+        if(game.seat_pieces.length > 0) {
+            //* dans le cas ou des pièces sont placées on va les redessiner une à une avec la méthode draw_seat()
+            //? cette méthode prend le context du canvas, les positions de la pièce à dessiner ainsi que son type pour définir sa couleur
+            game.seat_pieces.forEach((current_piece) => {
+                piece.draw_seat(ctx, current_piece.type, current_piece.position);
+            });    
+        }
         grid.is_all_positions_set = true;
     },
     /* ------------------- METHODES ----------------- */
