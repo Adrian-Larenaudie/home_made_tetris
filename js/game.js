@@ -1,11 +1,12 @@
 import { grid } from './utils/grid.js';
 import { piece } from './utils/piece.js';
 import { utils } from './utils/utils.js';
+import { user_input } from './utils/user_input.js';
 
 export const game = {
     over: false,
     interval: null,
-    speed: 100,
+    speed: 350,
     current_piece_type: null,
     current_piece_index: null,
     //? un tableau qui contient les dix positions atteignables par la piece courante
@@ -45,6 +46,7 @@ export const game = {
         piece.prepare_drawing(game.draw_pieces_functions[game.current_piece_index]['method']);
         game.current_piece_type = game.draw_pieces_functions[game.current_piece_index]['type'];
         game.interval = setInterval(game.on_move, game.speed);
+        user_input.on_key_press();
     },
 
     on_move: () => {
