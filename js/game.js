@@ -34,7 +34,7 @@ export const game = {
         {'method': piece.draw_Z, 'type': 'Z'},
     ],
 
-    //? ce tableau nous servira à stocker les pièce qui sont placées
+    //? ce tableau nous servira à stocker les pièces qui sont placées
     seat_pieces: [],
     //? initialisation du jeu
     init: () => {
@@ -47,6 +47,7 @@ export const game = {
         game.current_piece_type = game.draw_pieces_functions[game.current_piece_index]['type'];
         game.interval = setInterval(game.on_move, game.speed);
         user_input.on_key_press();
+        console.log(grid.all_positions);
     },
 
     on_move: () => {
@@ -71,6 +72,7 @@ export const game = {
             piece.prepare_drawing(game.draw_pieces_functions[game.current_piece_index]['method'], piece.current_positions);
             //! PARTIE IMPORTANTE
         } else {
+            //! ATTENTION ICI IL Y A UN BUG on ne veut pas seulement 10 stop positions: une pièce en dessus peut avoir une stop position
             //* si on la pièce est arrivée en bas on va modifier le tableau des stop position avec les nouvelles valeurs
             //* pour ça il faut analyser les current positions et stocker les valeurs y les plus petites 
             //* on va parcourir le tableau des stop position
