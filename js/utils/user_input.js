@@ -1,4 +1,5 @@
 import { game } from '../game.js';
+import { grid } from './grid.js';
 import { piece } from './piece.js';
 export const user_input = {
     on_key_press: () => {
@@ -18,9 +19,13 @@ export const user_input = {
                     break;
                 case "q":                
                     if(user_input.can_current_piece_move(piece.current_positions, 0, 'left')) {
+                        clearInterval(game.interval);
                         piece.current_positions.forEach((position) => {
                             position.x = position.x - 31;
                         });
+                        grid.draw();
+                        piece.prepare_drawing(game.draw_pieces_functions[game.current_piece_index]['method'], piece.current_positions);
+                        game.interval = setInterval(game.on_move, game.speed);
                     }
                     break;
                 case "s":
@@ -28,9 +33,13 @@ export const user_input = {
                     break;
                 case "d":
                     if(user_input.can_current_piece_move(piece.current_positions, 279, 'right')) {
+                        clearInterval(game.interval);
                         piece.current_positions.forEach((position) => {
                             position.x = position.x + 31;
                         })
+                        grid.draw();
+                        piece.prepare_drawing(game.draw_pieces_functions[game.current_piece_index]['method'], piece.current_positions);
+                        game.interval = setInterval(game.on_move, game.speed);
                     }
                     break;
                 case " ":
