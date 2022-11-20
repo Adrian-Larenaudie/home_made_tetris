@@ -2,6 +2,8 @@ import { game } from '../game.js';
 import { grid } from './grid.js';
 import { piece } from './piece.js';
 export const user_input = {
+    last_keypress_value: null,
+
     on_key_press: () => {
         document.addEventListener('keypress', user_input.on_key_press_handler, true);
     },
@@ -19,13 +21,22 @@ export const user_input = {
                     break;
                 case "q":                
                     if(user_input.can_current_piece_move(piece.current_positions, 0, 'left')) {
-                        clearInterval(game.interval);
+                        //* pour obtenir un comportement propre à tetris on stop l'interval tant la pièce est en déplacement
+                        //* la pièce ne descend plus tant qu'elle se déplace sur un coté 
+                        //* cpdt on ne clear pas l'interval si la dernière touche appuyée est de la touche courante
+                        if(event.key === user_input.last_keypress_value) clearInterval(game.interval);
                         piece.current_positions.forEach((position) => {
                             position.x = position.x - 31;
                         });
-                        grid.draw();
-                        piece.prepare_drawing(game.draw_pieces_functions[game.current_piece_index]['method'], piece.current_positions);
-                        game.interval = setInterval(game.on_move, game.speed);
+                        if(event.key === user_input.last_keypress_value) {
+                             //* on redessine la grille puisque la méthode on_move n'est plus appelée
+                            grid.draw();
+                            //* idem pour la pièce courante
+                            piece.prepare_drawing(game.draw_pieces_functions[game.current_piece_index]['method'], piece.current_positions);
+                            //* et on remet l'interval pour que la pièce descende à nouveau
+                            game.interval = setInterval(game.on_move, game.speed);
+                        }
+                       
                     }
                     break;
                 case "s":
@@ -33,19 +44,23 @@ export const user_input = {
                     break;
                 case "d":
                     if(user_input.can_current_piece_move(piece.current_positions, 279, 'right')) {
-                        clearInterval(game.interval);
+                        if(event.key === user_input.last_keypress_value) clearInterval(game.interval);
                         piece.current_positions.forEach((position) => {
                             position.x = position.x + 31;
                         })
-                        grid.draw();
-                        piece.prepare_drawing(game.draw_pieces_functions[game.current_piece_index]['method'], piece.current_positions);
-                        game.interval = setInterval(game.on_move, game.speed);
+                        if(event.key === user_input.last_keypress_value) {
+                            grid.draw();
+                            piece.prepare_drawing(game.draw_pieces_functions[game.current_piece_index]['method'], piece.current_positions);
+                            game.interval = setInterval(game.on_move, game.speed);
+                        }
+                       
                     }
                     break;
                 case " ":
                     //TODO on jouera une pause 
                 break;
             };
+            user_input.last_keypress_value = event.key;
         }     
     },
 

@@ -28,7 +28,7 @@ export const piece = {
         draw_function(ctx); 
     },
 
-    draw_I: (ctx,) => {
+    draw_I: (ctx) => {
         ctx.fillStyle = '#008000';
         if(piece.current_positions === null) {
             piece.current_positions = utils.make_deep_copy_of_array(piece.starting_positions._I);
