@@ -69,6 +69,9 @@ export const grid = {
         if(!game.over) {
             piece.get_random_type();
             game.interval = setInterval(game.on_move, game.speed);
+           
+        } else {
+            //* sinon on retire les event sur les input du user
             user_input.remove_key_touch_event();
         }
     },

@@ -1,4 +1,5 @@
-import { utils } from "../../v0/js/utils/utils.js";
+import { user_input } from "./user_input.js";
+import { utils } from "../utils/utils.js";
 
 export const piece = {
     /* ------------------ PROPRIETES ---------------- */
@@ -20,14 +21,39 @@ export const piece = {
     types: [ 'J', 'I', 'S', 'T', 'O', 'L', 'Z'],
     current_type: null,
     current_color: null,
+    //TODO les rotations
+    //todo on aura d'abord une méthode qui vérifie si la rotation peut avoir lieu 
+    //todo puis une méthode qui exécute la rotation
+    //* J quatres rotations: 'default', 'spin_two', 'spin_three', 'spin_four'
+    //* I deux rotations: 'default', 'spin_two'
+    //* S deux rotations: 'default', 'spin_two'
+    //* T quatres rotations: 'default', 'spin_two', 'spin_three', 'spin_four'
+    //* O zéro rotation: 'default'
+    //* L quatres rotations: 'default', 'spin_two', 'spin_three', 'spin_four'
+    //* Z deux rotations: 'default', 'spin_two'
+    current_rotation: null,
+    rotations_possibilities: {
+        'J': ['default', 'spin_two', 'spin_three', 'spin_four'],
+        'I': ['default', 'spin_two'],
+        'S': ['default', 'spin_two'],
+        'T': ['default', 'spin_two', 'spin_three', 'spin_four'],
+        'O': ['default'],
+        'L': ['default', 'spin_two', 'spin_three', 'spin_four'],
+        'Z': ['default', 'spin_two'],
+    },
     /* ------------------ PROPRIETES ---------------- */
 
     /* ------------------- METHODES ----------------- */
 
     //* récupère le nom d'une pièce aléatoirement
     get_random_type: () => { 
-        piece.current_type = piece.types[Math.floor(Math.random() * piece.types.length)]
+        piece.current_type = piece.types[Math.floor(Math.random() * piece.types.length)];
+        //* on donne la rotation par défaut à notre pièce
+        piece.current_rotation = piece.rotations_possibilities[piece.current_type][0];
+        //* et on remet le spin index à 0
+        user_input.spin_index = 0;
         piece.draw(piece.current_type);
+        //console.log(JSON.stringify(piece.rotations_possibilities, null, 2));
     },
 
     //* dessine la pièce courante
@@ -48,7 +74,7 @@ export const piece = {
                 piece.current_color = '#e61919';
                 break;
             case 'J':
-                piece.current_color = '#fff100';
+                piece.current_color = '#fcdc12';
                 break;
             case 'S':
                 piece.current_color = '#791cf8';
