@@ -125,21 +125,183 @@ export const user_input = {
         //* on aurait un switch case
         //* dans lequel on identifie le type de pièce et le type de position demandée
         //* en fonction de ces élément on éffectue une vérification si les positions sont possible on joue la méthode suivante
-        user_input.piece_spin();
-    },
-
-    piece_spin: () => {
-        //clearInterval(game.interval);
         if(piece.rotations_possibilities[piece.current_type].length - 1 === user_input.spin_index) {
             user_input.spin_index = 0;
         } else {
             user_input.spin_index++;
         }
+        //* le check
+        let can_spin = true;
+            switch (piece.current_type) {
+                case 'I':
+                    switch (piece.current_rotation) {
+                        case 'default':                          
+                            grid.all_positions.forEach((grid_position) => {
+                                if (piece.current_positions[0].x + 31 === grid_position.x 
+                                    && piece.current_positions[0].y - 31 === grid_position.y 
+                                    && grid_position.used === 1
+                                    || piece.current_positions[2].x - 31 === grid_position.x 
+                                    && piece.current_positions[2].y + 31 === grid_position.y 
+                                    && grid_position.used === 1
+                                    || piece.current_positions[3].x - 62 === grid_position.x 
+                                    && piece.current_positions[3].y + 62 === grid_position.y 
+                                    && grid_position.used === 1) {
+                                        //* on ne fait pas de rotation, on remet la valeur de l'index par défaut
+                                        can_spin = false;
+                                    } else {
+                                        //* sinon c'est bon la pièce peut effectuer une rotation
+                                    }
+                            });
+                            can_spin ? user_input.piece_spin() :   user_input.spin_index = 0;
+                            break;
+                        case 'spin_two':
+                            grid.all_positions.forEach((grid_position) => {
+                                if (piece.current_positions[0].x - 31 === grid_position.x 
+                                    && piece.current_positions[0].y + 31 === grid_position.y 
+                                    && grid_position.used === 1
+                                    || piece.current_positions[2].x + 31 === grid_position.x 
+                                    && piece.current_positions[2].y - 31 === grid_position.y 
+                                    && grid_position.used === 1
+                                    || piece.current_positions[3].x + 62 === grid_position.x 
+                                    && piece.current_positions[3].y - 62 === grid_position.y 
+                                    && grid_position.used === 1) {
+                                        //* on ne fait pas de rotation, on remet la valeur de l'index par défaut
+                                        can_spin = false;
+                                    } else {
+                                        //* sinon c'est bon la pièce peut effectuer une rotation
+                                    }
+                            });
+                            can_spin ? user_input.piece_spin() :   user_input.spin_index = 0;
+                            break;
+                    }
+                    break;
+               /*  case 'T':
+                    switch (piece.current_rotation) {
+                        case 'default':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x - 31, y: piece.current_positions[0].y - 31};
+                            //piece.current_positions[1] //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x - 31, y: piece.current_positions[2].y + 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 31, y: piece.current_positions[3].y - 31};
+                            break;
+                        case 'spin_two':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x - 31 , y: piece.current_positions[0].y + 31};
+                            //piece.current_positions[1] = //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x + 31, y: piece.current_positions[2].y + 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x - 31, y: piece.current_positions[3].y - 31};
+                            break;
+                        case 'spin_three':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x + 31 , y: piece.current_positions[0].y + 31};
+                            //piece.current_positions[1] = //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x + 31, y: piece.current_positions[2].y - 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x - 31, y: piece.current_positions[3].y + 31};
+                            break;
+                        case 'spin_four':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x + 31 , y: piece.current_positions[0].y - 31};
+                            //piece.current_positions[1] = //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x - 31, y: piece.current_positions[2].y - 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 31, y: piece.current_positions[3].y + 31};
+                            break;
+                    }
+                case 'O':
+                    //* cette pièce ne tourne pas
+                    break;
+                case 'L':
+                    console.log('L');
+                    switch (piece.current_rotation) {
+                        case 'default':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x - 31, y: piece.current_positions[0].y - 31};
+                            //piece.current_positions[1] //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x + 31, y: piece.current_positions[2].y + 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 62, y: piece.current_positions[3].y + 0};
+                            break;
+                        case 'spin_two':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x - 31 , y: piece.current_positions[0].y + 31};
+                            //piece.current_positions[1] = //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x + 31, y: piece.current_positions[2].y - 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 0, y: piece.current_positions[3].y - 62};
+                            break;
+                        case 'spin_three':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x + 31 , y: piece.current_positions[0].y + 31};
+                            //piece.current_positions[1] = //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x - 31, y: piece.current_positions[2].y - 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x - 62, y: piece.current_positions[3].y + 0};
+                            break;
+                        case 'spin_four':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x + 31 , y: piece.current_positions[0].y - 31};
+                            //piece.current_positions[1] = //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x - 31, y: piece.current_positions[2].y + 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 0, y: piece.current_positions[3].y + 62};
+                            break;
+                    }
+                    break;
+                case 'J':
+                    switch (piece.current_rotation) {
+                        case 'default':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x - 31, y: piece.current_positions[0].y - 31};
+                            //piece.current_positions[1] //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x + 31, y: piece.current_positions[2].y + 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 0, y: piece.current_positions[3].y + 62};
+                            break;
+                        case 'spin_two':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x - 31 , y: piece.current_positions[0].y + 31};
+                            //piece.current_positions[1] = //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x + 31, y: piece.current_positions[2].y - 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 62, y: piece.current_positions[3].y + 0};
+                            break;
+                        case 'spin_three':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x + 31 , y: piece.current_positions[0].y + 31};
+                            //piece.current_positions[1] = //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x - 31, y: piece.current_positions[2].y - 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 0, y: piece.current_positions[3].y - 62};
+                            break;
+                        case 'spin_four':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x + 31 , y: piece.current_positions[0].y - 31};
+                            //piece.current_positions[1] = //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x - 31, y: piece.current_positions[2].y + 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x - 62, y: piece.current_positions[3].y + 0};
+                            break;
+                    }
+                    break;
+                case 'S':
+                    switch (piece.current_rotation) {
+                        case 'default':
+                            //piece.current_positions[0] =  //* ne bouge jamais
+                            piece.current_positions[1] = {x: piece.current_positions[1].x + 31, y: piece.current_positions[1].y + 31};
+                            piece.current_positions[2] = {x: piece.current_positions[2].x - 31, y: piece.current_positions[2].y + 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x - 62, y: piece.current_positions[3].y + 0};
+                            break;
+                        case 'spin_two':
+                            //piece.current_positions[0] = //* ne bouge jamais
+                            piece.current_positions[1] = {x: piece.current_positions[1].x - 31, y: piece.current_positions[1].y - 31};
+                            piece.current_positions[2] = {x: piece.current_positions[2].x + 31, y: piece.current_positions[2].y - 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 62, y: piece.current_positions[3].y + 0};
+                            break;
+                    }
+                    break;
+                case 'Z':
+                    switch (piece.current_rotation) {
+                        case 'default':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x - 31, y: piece.current_positions[0].y - 31};
+                             //piece.current_positions[1] =  //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x - 31, y: piece.current_positions[2].y + 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 0, y: piece.current_positions[3].y + 62};
+                            break;
+                        case 'spin_two':
+                            piece.current_positions[0] = {x: piece.current_positions[0].x + 31, y: piece.current_positions[0].y + 31};
+                            //piece.current_positions[1] = //* ne bouge jamais
+                            piece.current_positions[2] = {x: piece.current_positions[2].x + 31, y: piece.current_positions[2].y - 31};
+                            piece.current_positions[3] = {x: piece.current_positions[3].x + 0, y: piece.current_positions[3].y - 62};
+                            break;
+                    }
+                    break;
+            */ }
+    },
+
+    piece_spin: () => {
         piece.current_rotation = piece.rotations_possibilities[piece.current_type][user_input.spin_index];
         console.log(piece.current_rotation);
         switch (piece.current_type) {
             case 'I':
-                console.log('I');
                 switch (piece.current_rotation) {
                     case 'default':
                         piece.current_positions[0] = {x: piece.current_positions[0].x + 31, y: piece.current_positions[0].y - 31};
@@ -156,7 +318,6 @@ export const user_input = {
                 }
                 break;
             case 'T':
-                console.log('T');
                 switch (piece.current_rotation) {
                     case 'default':
                         piece.current_positions[0] = {x: piece.current_positions[0].x - 31, y: piece.current_positions[0].y - 31};
@@ -184,11 +345,9 @@ export const user_input = {
                         break;
                 }
             case 'O':
-                console.log('O');
                 //* cette pièce ne tourne pas
                 break;
             case 'L':
-                console.log('L');
                 switch (piece.current_rotation) {
                     case 'default':
                         piece.current_positions[0] = {x: piece.current_positions[0].x - 31, y: piece.current_positions[0].y - 31};
@@ -217,7 +376,6 @@ export const user_input = {
                 }
                 break;
             case 'J':
-                console.log('J');
                 switch (piece.current_rotation) {
                     case 'default':
                         piece.current_positions[0] = {x: piece.current_positions[0].x - 31, y: piece.current_positions[0].y - 31};
@@ -246,7 +404,6 @@ export const user_input = {
                 }
                 break;
             case 'S':
-                console.log('S');
                 switch (piece.current_rotation) {
                     case 'default':
                         //piece.current_positions[0] =  //* ne bouge jamais
@@ -263,7 +420,6 @@ export const user_input = {
                 }
                 break;
             case 'Z':
-                console.log('Z');
                 switch (piece.current_rotation) {
                     case 'default':
                         piece.current_positions[0] = {x: piece.current_positions[0].x - 31, y: piece.current_positions[0].y - 31};

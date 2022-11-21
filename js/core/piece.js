@@ -47,7 +47,8 @@ export const piece = {
 
     //* récupère le nom d'une pièce aléatoirement
     get_random_type: () => { 
-        piece.current_type = piece.types[Math.floor(Math.random() * piece.types.length)];
+        // piece.current_type = piece.types[Math.floor(Math.random() * piece.types.length)];
+        piece.current_type = 'I';
         //* on donne la rotation par défaut à notre pièce
         piece.current_rotation = piece.rotations_possibilities[piece.current_type][0];
         //* et on remet le spin index à 0
