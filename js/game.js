@@ -32,7 +32,7 @@ export const game = {
     on_move: () => {
         let move = true;
 
-        //* si une piece arrive en bas
+        //* si une piece arrive en bas elle s'arrête
         game.end_positions.forEach((stop_position) => {
             piece.current_positions.forEach((current_position) => {
                 if(current_position.x === stop_position.x && current_position.y === stop_position.y) {
@@ -42,7 +42,7 @@ export const game = {
             });
         });
 
-        //* si une pièce arrive sur une autre pièce
+        //* si une pièce arrive sur une autre pièce elle s'arrête
         piece.current_positions.forEach((current_position) => {
             grid.all_positions.forEach((grid_position) => {
                 if(grid_position.x === current_position.x && grid_position.y === (current_position.y + 31) && grid_position.used === 1) {
