@@ -1,6 +1,7 @@
 import { user_input } from "./user_input.js";
 import { game } from "../game.js";
 import { piece } from "./piece.js";
+import { line } from "./line.js";
 
 export const grid = {
     /* ------------------ PROPRIETES ---------------- */
@@ -30,7 +31,7 @@ export const grid = {
                 if(x % 2 === 0) {
                     grid.all_positions.push({
                         position: (((y + 1) * 10) + (x + 1)),
-                        user: 0,
+                        used: 0,
                         x: (x * grid.size),
                         y: (y * grid.size),
                         color: '#dbdbdb',
@@ -38,7 +39,7 @@ export const grid = {
                 } else {
                     grid.all_positions.push({
                         position: ((x * 10) + y),
-                        user: 0,
+                        used: 0,
                         x: (x * grid.size),
                         y: (y * grid.size),
                         color: '#cecece',
@@ -46,6 +47,7 @@ export const grid = {
                 }
             };
         };
+        // console.log(grid.all_positions);
         grid.draw();
     },
 
@@ -65,6 +67,8 @@ export const grid = {
         });
         //* la pièce est placée on reset les valeurs
         piece.current_positions = null;
+        //* on check si il y a des lignes complètes
+        line.init();
         //* on relance une pièce et l'interval si la partie n'est pas terminée
         if(!game.over) {
             piece.get_random_type();

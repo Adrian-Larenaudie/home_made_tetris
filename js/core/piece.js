@@ -32,7 +32,7 @@ export const piece = {
         spin.counter = 0;
         piece.current_type = piece.types[Math.floor(Math.random() * piece.types.length)];
         //* si on veut tester un seul type de pièce -->
-        // piece.current_type = 'Z';
+        //piece.current_type = 'I';
         piece.draw(piece.current_type);
         //console.log(JSON.stringify(piece.rotations_possibilities, null, 2));
     },
