@@ -14,28 +14,43 @@ export const line = {
         line.make_array_of_rows();
     },
 
-    //* On va écrire une fonction qui va retourner un tableau contenant pour chaque lignes de la grille un tableau de positions
-   make_array_of_rows: () => {
-    const all_positions_copy = utils.make_deep_copy_of_array(grid.all_positions);
-    //console.log(all_positions_copy);
-    let rows_counter = 0;
-    let rows_array = [];
-    let current_row_array = [];
+    //* On va écrire une fonction qui va retourner un tableau contenant pour chaque lignes de la grille un sous tableau de positions
+    make_array_of_rows: () => {
+        //* on va faire une copie profonde du tableau de toutes les positions
+        const all_positions_copy = utils.make_deep_copy_of_array(grid.all_positions);
+        //* on a besoin de compter le nombre de colonnes (10 par ligne)
+        let columns_counter = 0;
+        //* on veut stocker toutes les lignes dans un tableau à part
+        let rows_array = [];
+        //* chaque ligne courantes seront stockées dans un tableau provisoire
+        let current_row_array = [];
 
-    for (let i = 0; i < all_positions_copy.length; i++) {
-        if(rows_counter < 9) {
-            current_row_array.push(all_positions_copy[i]);
-            rows_counter++;
-        } else {
-            rows_array.push(current_row_array);
-            current_row_array = [];
-            current_row_array.push(all_positions_copy[i]);
-            rows_counter = 0;
+        //* on itère sur la copie du tableau de toutes les positions
+        for (let i = 0; i < all_positions_copy.length; i++) {
+            //* si on est à la toute première itération
+            if(i === 0) {
+                //* on ajoute au tableau de la ligne courante sa première position
+                current_row_array.push(all_positions_copy[i]);
+            //* sinon si le compteur du nbr de colonne est inférieur à 9 (il y a 10 colonnes par ligne en comptant l'index 0 on arrive à 9) 
+            } else if(columns_counter < 9) {
+                //* on va pusher la position courante dans le tableau de la ligne courante
+                current_row_array.push(all_positions_copy[i]);
+                //* et incrémenter notre compteur
+                columns_counter++;
+            //* sinon c'est qu'on arrive sur le dernier index de la ligne courante
+            } else {
+                //* on va alors pusher la ligne courante dans le tableau qui stockera chaque lignes sous forme de sous tableaux
+                rows_array.push(current_row_array);
+                //* on vide le tableau de la ligne courante
+                current_row_array = [];
+                //* on incrémente avec le premier index de la ligne suivante notre tableau de la ligne courante
+                current_row_array.push(all_positions_copy[i]);
+                //* puis on repasse notre compteur de colonnes à 0
+                columns_counter = 0;
+            } 
         }
-        
-    }
-    //console.log(rows_array);
-    line.check_and_delete(rows_array);
+        //console.log(rows_array);
+        line.check_and_delete(rows_array);
    },
 
     //* ici on check si il y a des lignes complètes
