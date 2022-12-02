@@ -45,7 +45,7 @@ export const spin = {
     //* permet de vérifier si la roation ne fait pas sortir la pièce de la grille de jeu
     check_border: () => {
         //* si au moins une des position de la pièce est en dehors de la grille ou jouera cannot_spin() sinon ou jouera can_spin()
-        console.log(utils.make_deep_copy_of_array(spin.current_positions_copy));
+        //console.log(utils.make_deep_copy_of_array(spin.current_positions_copy));
         let flag = false;
         for(let index = 0; index < spin.current_positions_copy.length; index++) {
             if(spin.current_positions_copy[index].x < 0 || spin.current_positions_copy[index].x > 279 || spin.current_positions_copy[index].y > 682) {
@@ -69,7 +69,7 @@ export const spin = {
                     && spin.current_positions_copy[i].y === grid.all_positions[j].y 
                     && grid.all_positions[j].used === 1
                 ) {
-                    console.log('match');
+                    //console.log('match');
                     flag = true;  
                 }
             };        
@@ -81,7 +81,7 @@ export const spin = {
 
     //* à jouer quand la pièce peut faire la rotation
     can_spin: () => {
-        console.log('Spin');
+        //console.log('Spin');
         //* si on arrive dans cette fonction on peut faire la rotation
         //* on va copier la valeur dans current_positions de façon profonde
         //* et remettre le tableau copy à null
@@ -98,7 +98,7 @@ export const spin = {
             spin.counter--;
         }
         spin.current_positions_copy = null;
-        console.log('nop');
+        //console.log('nop');
     },
 
     /* ------------------- METHODES ----------------- */

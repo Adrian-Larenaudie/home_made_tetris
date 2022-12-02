@@ -67,34 +67,14 @@ export const grid = {
         });
         //* la pièce est placée on reset les valeurs
         piece.current_positions = null;
-        //* on check si il y a des lignes complètes
-        line.init();
         //* on relance une pièce et l'interval si la partie n'est pas terminée
         if(!game.over) {
-            piece.get_random_type();
-            game.interval = setInterval(game.on_move, game.speed);
-           
+            //* on check si il y a des lignes complètes
+            line.init();          
         } else {
             //* sinon on retire les event sur les input du user
             user_input.remove_key_touch_event();
         }
-    },
-
-    //* vérifie si il y a des lignes rempli et les ajoute au tableau full_line
-    check_full_lines: () => {
-
-    },
-
-    //* supprime les case pleines qui correspondent aux tableau des full_lines
-    remove_full_lines: () => {
-
-    },
-
-    //* fait descendre les lignes supérieur di des lignes ont été suprimées (un petit timer pour laisser le user visualiser la suppression de ligne)
-    down_lines: () => {
-        setTimeout(() => {
-            //! attention si deux lignes sont supprimée il faut descendre de deux case toutes les lignes au dessus de ces eux lignes
-        }, 200);
     },
     /* ------------------- METHODES ----------------- */
 }
