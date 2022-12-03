@@ -25,6 +25,7 @@ export const grid = {
 
     //* génère les valeurs initiales de la grille
     generate_values: () => {
+        grid.all_positions = [];
         for(let y = 0; y < grid.y_case_number; y++) {
             for(let x = 0; x < grid.x_case_number; x++) {
                 if(x % 2 === 0) {

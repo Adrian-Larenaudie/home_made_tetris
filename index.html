@@ -10,14 +10,37 @@
 <body>
 
     <main>
-        <h1 class="title">Hello World!</h1>
+
+        <h1 class="title">Tetris Game</h1>
         <canvas height="682px" width="310px"></canvas>
+        <div class="score_tags">
+            <p class="score">current score: <span class="current_score_value">0</span></p>
+            <p class="score">completed lines: <span class="completed_lines_value">0</span></p>
+            <p class="score">best score: <span class="best_score_value">0</span></p>
+            <p class="score">max completed lines: <span class="max_completed_lines_value">0</span></p>
+        </div>
+
     </main>
 
+    <div class="side_how_to_play_panel">
+        <h3>How to play</h1>
+            <p>Left:    Q</p>
+            <p>Right:   D</p>
+            <p>Speed:   S</p>
+            <p>Spin:    Z</p>
+            <p>Pause:   spacebar</p>
+    </div>
+
+    <div class="modal">
+        <h1 class="modal_title">TeTris</h1>
+        <a class="launch_button">Click here to start game</a>
+        <p class="end_game_score"></p>
+    </div>
+
+    <div class="modal_pause">
+        <h1 class="modal_title">Pause</h1>
+    </div>
+
     <script src="./js/game.js" type="module"></script>
-  <!--   <script src="./js/utils/grid.js" type="module"></script>
-    <script src="./js/utils/piece.js" type="module"></script>
-    <script src="./js/utils/utils.js" type="module"></script>
-    <script src="./js/utils/user_input.js" type="module"></script> -->
 </body>
 </html>

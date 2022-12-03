@@ -2,6 +2,7 @@ import { user_input } from "./core/user_input.js";
 import { grid } from "./core/grid.js";
 import { piece } from "./core/piece.js";
 import { end_positions } from "./data/data.js";
+import { scoring } from "./core/scoring.js";
 
 export const game = {
     /* ------------------ PROPRIETES ---------------- */
@@ -9,12 +10,31 @@ export const game = {
     interval: null,
     speed: 500,
     end_positions: end_positions,
+    button: document.querySelector('.launch_button'),
+    modal: document.querySelector('.modal'),
+    pause_modal: document.querySelector('.modal_pause'),
+    pause: false,
     /* ------------------ PROPRIETES ---------------- */
 
     /* ------------------- METHODES ----------------- */
     init: () => {
+        scoring.init();
         grid.generate_values();
-        piece.get_random_type();
+        grid.draw(); 
+        game.modal.style.visibility = 'visible'; 
+        game.button.addEventListener('click', (event) => {
+            clearInterval(game.interval);
+            game.speed = 500;
+            piece.current_positions = null,
+            piece.current_type = null,
+            piece.current_color = null,   
+            game.modal.style.visibility = 'hidden';
+            game.launch_game();
+        })
+    },
+
+    launch_game: () => { 
+        piece.get_random_type();    
         game.interval = setInterval(game.on_move, game.speed);
         user_input.add_key_event();
     },
@@ -30,7 +50,7 @@ export const game = {
                     //* si c'est le cas on clear l'interval
                     move = false
                     game.over = true;
-                    clearInterval(game.interval);  
+                    //clearInterval(game.interval);  
                 }
             });
         });
@@ -55,7 +75,7 @@ export const game = {
             });
         });
 
-        //* si le pièce peut bouger
+        //* si la pièce peut bouger
         if(move){
             //* on incrémente chaques cases de la pièce de la valeur d'une case vers le bas
             piece.current_positions.forEach((current_position) => {
@@ -64,16 +84,19 @@ export const game = {
             //* puis on redessine la grille et la pièce
             grid.draw();
             piece.draw(piece.current_type);
+        //* sinon c'est que la pièce courante est soit arrivée en bas de la grille soit arrivée sur une pièce déjà placée 
+        } else if(!game.over) {
+            //* on va donc placer cette pièce sur la grille
+            grid.seat_piece();
         //* sinon si game.over est true c'est que la partie est terminée
-        } else if(game.over) {
+        } else {
+            scoring.set_best_score();
+            game.over = false;    
             //* on retire les event sur les input du user
             user_input.remove_key_event();
-            //* pour le moment on log que la partie est términée
-            console.log('game over!');
-        //* sinon c'est que la pièce courante est soit arrivée en bas de la grille soit arrivée sur une pièce déjà placée 
-        } else {
-            //* on va donc placé cette pièce sur la grille
-            grid.seat_piece();
+            //* pour le moment on log que la partie est terminée
+            document.querySelector('.modal_title').textContent = 'Game Over!';
+            game.init();
         }
     },
     /* ------------------- METHODES ----------------- */

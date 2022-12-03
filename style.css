@@ -12,10 +12,96 @@ main {
     position: relative;
 }
 
-.title {
+.title, .score {
     color: white;
 }
 
 canvas {
     background-color: grey;
+}
+
+.score_tags {
+    display: flex;
+}
+
+p span {
+    padding-right: 3rem;
+}
+
+.modal, .modal_pause {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 42;
+    background-color:rgba(0, 0, 0, 0.8);;
+  }
+
+.modal_pause {
+    visibility: hidden;
+}
+
+.launch_button {
+    cursor: pointer;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 4px 1px 18px rgba(0,0,0,0.81);
+    transition: 0.1s;
+}
+
+.launch_button:hover {
+    transition: 0.1s;
+    transform: scale(1.02);
+}
+
+.modal_title {
+    margin-top: 10rem;
+    font-size: 6rem;
+    color: white;
+    text-shadow: 4px 1px 18px rgba(0,0,0,0.81);
+}
+
+.end_game_score {
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 4px 1px 18px rgba(0,0,0,0.81);
+}
+
+.img_bloc {
+    z-index: 43;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+
+.ear_img {
+    fill: white;
+    cursor: pointer;
+}
+
+.song_off {
+    display: none;
+}
+
+.side_how_to_play_panel {
+    color: white;
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    z-index: 43;
+    border: solid 2px white;
+    padding: 1rem;
+    border-radius: 0.2rem;
+}
+
+.side_how_to_play_panel h3, .side_how_to_play_panel p {
+    margin: 0;
+    margin: 0.5rem;
 }

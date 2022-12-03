@@ -3,11 +3,7 @@ import { game } from "../game.js";
 import { utils } from "../utils/utils.js";
 import { grid } from "./grid.js";
 import { piece } from "./piece.js";
-
-//? le comportement qu'on veut -->
-//? connaitre le nombre de ligne à suprimer
-//? surpimer les lignes
-//? faire descendre les autres lignes en conséquence
+import { scoring } from "./scoring.js";
 
 export const line = {
 
@@ -59,6 +55,8 @@ export const line = {
                 }        
             }
             if(flag) {
+                scoring.completed_lines++;
+                scoring.update_score();
                 if (i != 0) {
                     //* on a une ligne complète à l'index i
                     //* donc là on veut donner à cette ligne la valeur de la ligne du dessus
