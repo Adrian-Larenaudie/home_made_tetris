@@ -16,7 +16,7 @@ export const scoring = {
     },
 
     get_best_score: () => {
-        if(localStorage.getItem("best_score")) {
+        if(localStorage.getItem("best_tetris_score")) {
             scoring.best_score_displayer.textContent = localStorage.getItem("best_tetris_score");
             scoring.max_completed_lines_displayer.textContent = localStorage.getItem("max_completed_lines_value");
         }

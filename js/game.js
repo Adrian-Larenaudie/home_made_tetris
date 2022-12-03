@@ -3,6 +3,7 @@ import { grid } from "./core/grid.js";
 import { piece } from "./core/piece.js";
 import { end_positions } from "./data/data.js";
 import { scoring } from "./core/scoring.js";
+import { song } from './utils/song.js';
 
 export const game = {
     /* ------------------ PROPRIETES ---------------- */
@@ -18,6 +19,7 @@ export const game = {
 
     /* ------------------- METHODES ----------------- */
     init: () => {
+        song.init();
         scoring.init();
         grid.generate_values();
         grid.draw(); 

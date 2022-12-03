@@ -105,3 +105,17 @@ p span {
     margin: 0;
     margin: 0.5rem;
 }
+
+.img_bloc p {
+    color: white;
+    margin: 0;
+    line-height: 175%;
+    margin-right: 0.5rem;
+}
+
+.img_bloc, .img_bloc__music, .img_bloc_sound_effects {
+    display: flex;
+}
+.img_bloc__music, .img_bloc_sound_effects {
+    margin-right: 1rem;
+}

@@ -82,6 +82,8 @@ export const spin = {
         //* on va copier la valeur dans current_positions de façon profonde
         //* et remettre le tableau copy à null
         piece.current_positions = utils.make_deep_copy_of_array(spin.current_positions_copy);
+        piece.draw();
+        grid.draw();
         spin.current_positions_copy = null;
     },
 
