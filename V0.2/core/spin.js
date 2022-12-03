@@ -8,7 +8,6 @@ export const spin = {
     /* ------------------ PROPRIETES ---------------- */
     current_positions_copy: null,
     counter: 0,
-
     /* ------------------ PROPRIETES ---------------- */
 
     /* ------------------- METHODES ----------------- */

@@ -32,7 +32,7 @@ export const game = {
     on_move: () => {
         let move = true;
 
-        //* si une piece arrive en bas elle s'arrête
+        //* quand une piece arrive en bas elle doit s'arrêter (le flag move passe à false)
         game.end_positions.forEach((stop_position) => {
             piece.current_positions.forEach((current_position) => {
                 if(current_position.x === stop_position.x && current_position.y === stop_position.y) {
@@ -42,7 +42,7 @@ export const game = {
             });
         });
 
-        //* si une pièce arrive sur une autre pièce elle s'arrête
+        //* quand une pièce arrive sur une autre pièce elle doit s'arrêter aussi (le flag move passe à false)
         piece.current_positions.forEach((current_position) => {
             grid.all_positions.forEach((grid_position) => {
                 if(grid_position.x === current_position.x && grid_position.y === (current_position.y + 31) && grid_position.used === 1) {
@@ -52,12 +52,16 @@ export const game = {
             });
         });
 
+        //* si le pièce peut bouger
         if(move){
+            //* on incrémente chaques cases de la pièce de la valeur d'une case vers le bas
             piece.current_positions.forEach((current_position) => {
                 current_position.y += 31;
             });
+            //* puis on redessine la grille et la pièce
             grid.draw();
             piece.draw(piece.current_type);
+        //* sinon c'est que la pièce est soit arrivée en bas de la grille soit sur une pièce déjà placée
         } else {
             //* on vérifie si le jeu est terminé
             game.check_over();
@@ -75,7 +79,7 @@ export const game = {
                 }
             });
         });
-        //* on place la position
+        //* on place la pièce
         grid.seat_piece();
     }
     /* ------------------- METHODES ----------------- */
