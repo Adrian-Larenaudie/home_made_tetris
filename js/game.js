@@ -1,7 +1,7 @@
 import { user_input } from "./core/user_input.js";
 import { grid } from "./core/grid.js";
 import { piece } from "./core/piece.js";
-import { end_positions } from "./data/data.js";
+import { end_positions, speed } from "./data/data.js";
 import { scoring } from "./core/scoring.js";
 import { song } from './utils/song.js';
 
@@ -9,7 +9,7 @@ export const game = {
     /* ------------------ PROPRIETES ---------------- */
     over: false,
     interval: null,
-    speed: 500,
+    speed: speed.current,
     end_positions: end_positions,
     button: document.querySelector('.launch_button'),
     modal: document.querySelector('.modal'),
@@ -26,7 +26,7 @@ export const game = {
         game.modal.style.visibility = 'visible'; 
         game.button.addEventListener('click', (event) => {
             clearInterval(game.interval);
-            game.speed = 500;
+            game.speed = speed.current;
             piece.current_positions = null,
             piece.current_type = null,
             piece.current_color = null,   

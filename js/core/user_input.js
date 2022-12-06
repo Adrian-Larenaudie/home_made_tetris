@@ -1,3 +1,4 @@
+import { speed } from '../data/data.js';
 import { game } from '../game.js';
 import { grid } from './grid.js';
 import { piece } from './piece.js';
@@ -79,7 +80,7 @@ export const user_input = {
             if(!user_input.keydown_flag) {
                 user_input.keydown_flag = true;
                 clearInterval(game.interval);
-                game.speed = 50;
+                game.speed = speed.on_key_press_s;
                 game.interval = setInterval(game.on_move, game.speed);           
             }
         }
@@ -91,7 +92,7 @@ export const user_input = {
             if(!user_input.keyup_flag) {
                 user_input.keyup_flag = true;
                 clearInterval(game.interval);
-                game.speed = 500;
+                game.speed = speed.current;
                 game.interval = setInterval(game.on_move, game.speed);
             }
         }

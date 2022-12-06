@@ -32,6 +32,11 @@ export const grid_sizes = {
     size: 31,
 };
 
+export const speed = {
+    current: 400,
+    on_key_press_s: 40
+}
+
 //* EXPLICATIONS DE L'OBJET spin_data -->
 //* contient les données relatives au rotations - la lettre indique le type de pièce -
 //* le nombre de tableau associé à la lettre indique le nombre de rotation possible pour cette pièce -
