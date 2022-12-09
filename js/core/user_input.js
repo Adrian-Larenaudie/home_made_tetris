@@ -67,7 +67,14 @@ export const user_input = {
                     }
                     break;
                 case " ":
-                    //TODO on jouera une pause 
+                    //TODO on jouera une pause
+                    if(!game.pause) {
+                        game.pause = true;
+                        console.log(game.pause);
+                    } else {
+                        game.pause = false;
+                        console.log(game.pause);
+                    }
                 break;
             };
             user_input.last_keypress_value = event.key;
