@@ -79,3 +79,7 @@ export const song = {
     /* ------------------- METHODES ----------------- */
 
 };
+
+/*
+TODO DOCUMENTATION
+*/

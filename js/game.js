@@ -95,7 +95,7 @@ export const game = {
 game.init();
 
 /* 
-*DOCUMENTATION FR
+*DOCUMENTATION
 
 game.js est le fichier principale du jeu.
 

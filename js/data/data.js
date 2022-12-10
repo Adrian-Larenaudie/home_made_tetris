@@ -1,6 +1,6 @@
-//?? ici toutes les valeurs qui définissent le jeu sont déclarées, elles sont ensuite exploitées dans les différents modules ??//
+// ici toutes les valeurs qui définissent le jeu sont déclarées, elles sont ensuite exploitées dans les différents modules //
 
-//* cet objet définit par défauts les positions de départ pour chaque type de pièce
+//* cet objet définit par défaut les positions de départ pour chaque type de pièce
 export const starting_positions = {
     'I': [{x: 124,y: 0}, {x: 124,y: 31}, {x: 124,y: 62}, {x: 124,y: 93}],
     'T': [{x: 124,y: 0}, {x: 124,y: 31}, {x: 93,y: 31}, {x: 155,y: 31}],
@@ -11,7 +11,7 @@ export const starting_positions = {
     'Z': [{x: 124,y: 0}, {x: 155,y: 0}, {x: 155,y: 31}, {x: 186,y: 31}],
 };
 
-//* ce tableau définit la ligne des positions final de la grille de jeu
+//* ce tableau définit les positions final de la grille de jeu (correspond à la dernière ligne de la grille)
 export const end_positions = [
     {x: 0, y: 651},
     {x: 31, y: 651},
@@ -25,13 +25,15 @@ export const end_positions = [
     {x: 279, y: 651},
 ];
 
-//* cet objet définit la taille des cases du jeu le nombre de colonne et de ligne y = ligne x = colonne
+//* cet objet définit la taille des cases du jeu le nombre de colonne et de ligne (y pour les lignes, x pour les colonnes)
 export const grid_sizes = {
     x_case_number: 10,
     y_case_number: 22,
     size: 31,
 };
 
+//* cet objet définit la vitesse de déplacement de la pièce courante
+//* (current: pour la vitesse classique, on_key_press_s: pour la vitesse rapide lorsque l'utilisateur appuie sur la touche S)
 export const speed = {
     current: 400,
     on_key_press_s: 40
@@ -42,7 +44,7 @@ export const speed = {
 //* le nombre de tableau associé à la lettre indique le nombre de rotation possible pour cette pièce -
 //* les quatres objets de chaque tableau contiennent les valeurs à ajouter à chaque case de la pièce courante correspondant au même index -
 //? REMARQUE chaque pièce effectue une rotation autour d'une de ses propres cases, l'index qui possède des valeurs à zéro représente cette case -
-//? REMARQUE la pièce nommée O ne faot aucune rotations puisqu'il s'agit d'un carré
+//? REMARQUE la pièce nommée O ne fait aucune rotations puisqu'il s'agit du carré
 
 export const spin_data = {
     'J': [
