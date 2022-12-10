@@ -126,4 +126,5 @@ export const user_input = {
         return flag;
     },
     /* ------------------- METHODES ----------------- */
-}
+};
+

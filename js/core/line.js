@@ -95,4 +95,5 @@ export const line = {
         game.interval = setInterval(game.on_move, game.speed);      
     },
 
-}
+};
+

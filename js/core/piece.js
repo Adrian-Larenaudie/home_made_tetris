@@ -14,17 +14,14 @@ export const piece = {
 
     /* ------------------- METHODES ----------------- */
 
-    //* récupère le nom d'une pièce aléatoirement
     get_random_type: () => { 
-        //* on remet la position de rotation par défaut à 0
         spin.counter = 0;
         piece.current_type = piece.types[Math.floor(Math.random() * piece.types.length)];
-        //* si on veut tester un seul type de pièce -->
+        //* pour tester un type de pièce en particulier -->
         //piece.current_type = 'I';
         piece.draw(piece.current_type);
     },
 
-    //* dessine la pièce courante
     draw: (type) => {
         const canvas = document.querySelector('canvas');
         const ctx = canvas.getContext('2d');
@@ -64,3 +61,38 @@ export const piece = {
         }
     },
 };
+
+/* 
+*DOCUMENTATION
+
+*DESCRIPTION DES PROPRIETES: (6)
+
+- size: définit la taille des cases de la pièce
+- starting_positions: contient le tableau des positions de départ pour chaque type de pièce
+- current_positions: contient les positions de la pièce courante
+- types: contient le tableau qui répertorie tous les types de pièce existentes (7) 
+- current_type: contient le type de la pièce courante 
+- current_color: contient la couleur de la pièce courante
+
+*DESCRIPTION DES METHODES: (2)
+
+- get_random_type(), permet de récupérer le nom d'une pièce aléatoirement dans le tableau des types de pièces:
+    - on commence par mettre le compteur des rotations à 0 
+    (la valeur du compteur permet de savoir sur quel type de rotation nous nous trouvons, (plus de détails dans la doc de spin.js)
+    - on pioche un index aléatoire dans le tableau des types de pièce, on donne la valeur de l'index à la propriété piece.current_type
+    - on appel la méthode draw() pour dessiner la pièce à partir de ce type
+
+- draw(), permet de dessiner ou de redessiner la pièce courante:
+    - récupération du canvas dans une constante
+    - on donne un context 2d au canves
+    - un switch case permet de donner la couleur désirée à la propriété current color en fonction du type de pièce
+    - ensuite on donne la couleur 
+    - on a alors un check:
+        - si les positions de la pièce courante sont null, on est dans le cas ou la pièce est dessinée pour la premère fois:
+            - dans ce cas on va utiliser les datas des positions de départs pour dessiner la pièce
+            - on fait une copie "profonde" à partir du tableau des positions de départ
+            (plus de détail dans la doc du module utils.js pour les copies "profondes")
+            - une fois qu'on a stocké les positions, on va les parcourir pour dessiner chaque case de la pièce
+        - sinon c'est qu'on est dans le cas ou la pièce courante est redessinée:
+            - on parcourt les positions de la pièce courante pour dessiner chaque case de la pièce courante
+*/
