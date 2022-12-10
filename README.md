@@ -1,6 +1,7 @@
 # home-made-tetris  
 
 Tetris from scratch en js vanilla  
+Dans chaque module toutes les propriétés et méthodes sont fortement documentés   
 
 **liste des TODO :**  
 
@@ -15,3 +16,5 @@ Tetris from scratch en js vanilla
     -> sur le décalage de pièce  
 
 -> ajouter la pause  
+
+-> écrire la documentation pour chaque fichier  
