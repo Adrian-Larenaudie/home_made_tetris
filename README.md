@@ -1,15 +1,17 @@
-# home-made-tetris
+# home-made-tetris  
 
-Tetris from scratch en js vanilla
+Tetris from scratch en js vanilla  
 
-liste des TODO :
+**liste des TODO :**  
 
--> ajouter des sons
-    -> musique original
-    -> sur la rotation de piece
-    -> sur la suppression de ligne
-    -> sur la positionnement d'une pièce
+-> ajouter des sons  
+    -> musique original  
+    -> sur la rotation de piece  
+    -> sur la suppression de ligne  
+    -> sur la positionnement d'une pièce  
 
--> amélioration de la fluiditer des inputs user:
-    -> sur la rotation de pièce
-    -> sur le décalage de pièce
+-> amélioration de la fluiditer des inputs user:  
+    -> sur la rotation de pièce  
+    -> sur le décalage de pièce  
+
+-> ajouter la pause  
