@@ -17,9 +17,7 @@ Dans chaque module toutes les propriétés et méthodes sont fortement document�
 
 -> écrire la documentation pour chaque fichier reste:
     -> /core/user_input.js
-    -> /core/spin.js
     -> /core/scoring.js
-    -> /core/line.js
     -> /utils/song.js
 
 -> améliorer le comportement sur les inputs 'Q' & 'D':
