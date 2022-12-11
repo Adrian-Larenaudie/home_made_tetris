@@ -8,6 +8,7 @@ import { song } from './utils/song.js';
 export const game = {
     /* ------------------ PROPRIETES ---------------- */
     over: false,
+    running: false,
     interval: null,
     speed: speed.current,
     end_positions: end_positions,
@@ -19,12 +20,14 @@ export const game = {
 
     /* ------------------- METHODES ----------------- */
     init: () => {
+        game.running = false;
         song.init();
         scoring.init();
         grid.generate_values();
         grid.draw(); 
         game.modal.style.visibility = 'visible'; 
         game.button.addEventListener('click', (event) => {
+            game.running = true;
             clearInterval(game.interval);
             game.speed = speed.current;
             piece.current_positions = null,
@@ -93,6 +96,8 @@ export const game = {
 
 //* LET'S GOO!
 game.init();
+// cet event est appelé qu'une seul fois et détectera le changement de page pour activer une pause si le jeu est lancé
+user_input.on_visibility_change_page_event_handler();
 
 /* 
 *DOCUMENTATION

@@ -29,10 +29,12 @@ export const user_input = {
         if(!game.over && piece.current_positions != null) {
             switch (event.key) {
                 case "z":
-                    spin.init();
+                    if(!game.pause) {
+                        spin.init();
+                    }
                     break;
                 case "q":                
-                    if(user_input.can_current_piece_move(piece.current_positions, 0, 'left')) {
+                    if(user_input.can_current_piece_move(piece.current_positions, 0, 'left') && !game.pause) {
                         //* pour obtenir un comportement propre à tetris on stop l'interval tant que la pièce est en déplacement
                         //* la pièce ne descend plus tant qu'elle se déplace sur un coté 
                         //* cpdt on ne clear pas l'interval si la dernière touche appuyée est de la touche courante
@@ -51,7 +53,7 @@ export const user_input = {
                     }
                     break;
                 case "d":
-                    if(user_input.can_current_piece_move(piece.current_positions, 279, 'right')) {
+                    if(user_input.can_current_piece_move(piece.current_positions, 279, 'right') && !game.pause) {
                         if(event.key === user_input.last_keypress_value) clearInterval(game.interval);
                         piece.current_positions.forEach((position) => {
                             position.x = position.x + 31;
@@ -67,14 +69,7 @@ export const user_input = {
                     }
                     break;
                 case " ":
-                    //TODO on jouera une pause
-                    if(!game.pause) {
-                        game.pause = true;
-                        console.log(game.pause);
-                    } else {
-                        game.pause = false;
-                        console.log(game.pause);
-                    }
+                    user_input.manage_pause();
                 break;
             };
             user_input.last_keypress_value = event.key;
@@ -82,7 +77,7 @@ export const user_input = {
     },
 
     on_key_down_handler: (event) => {
-        if(event.key === 's') {
+        if(event.key === 's' && !game.pause) {
             user_input.keyup_flag = false;
             if(!user_input.keydown_flag) {
                 user_input.keydown_flag = true;
@@ -94,7 +89,7 @@ export const user_input = {
     },
 
     on_key_up_handler: (event) => {
-        if(event.key === 's') {
+        if(event.key === 's' && !game.pause) {
             user_input.keydown_flag = false;
             if(!user_input.keyup_flag) {
                 user_input.keyup_flag = true;
@@ -103,6 +98,12 @@ export const user_input = {
                 game.interval = setInterval(game.on_move, game.speed);
             }
         }
+    },
+
+    on_visibility_change_page_event_handler: () => {
+        document.addEventListener("visibilitychange", (event) => {
+            user_input.manage_pause();
+        });
     },
 
     //* la méthode qui permet de vérifier si la pièce peut se déplacer
@@ -124,6 +125,18 @@ export const user_input = {
             });
         });    
         return flag;
+    },
+
+    manage_pause: () => {
+        if(!game.pause && game.running) {
+            game.pause_modal.style.visibility = "visible";
+            game.pause = true;
+            clearInterval(game.interval);
+        } else if(game.pause && game.running) {
+            game.pause_modal.style.visibility = "hidden";
+            game.pause = false;
+            game.interval = setInterval(game.on_move, game.speed);
+        }
     },
     /* ------------------- METHODES ----------------- */
 };
