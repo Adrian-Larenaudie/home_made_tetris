@@ -69,10 +69,10 @@ export const user_input = {
                     }
                     break;
                 case " ":
-                    user_input.manage_pause();
+                    user_input.manage_pause(false);
                 break;
             };
-            user_input.last_keypress_value = event.key;
+            if(['q', 'd'].includes(event.key)) user_input.last_keypress_value = event.key;
         }     
     },
 
@@ -102,7 +102,7 @@ export const user_input = {
 
     on_visibility_change_page_event_handler: () => {
         document.addEventListener("visibilitychange", (event) => {
-            user_input.manage_pause();
+            user_input.manage_pause(true);
         });
     },
 
@@ -127,12 +127,12 @@ export const user_input = {
         return flag;
     },
 
-    manage_pause: () => {
+    manage_pause: (from_on_visible_event) => {
         if(!game.pause && game.running) {
             game.pause_modal.style.visibility = "visible";
             game.pause = true;
             clearInterval(game.interval);
-        } else if(game.pause && game.running) {
+        } else if(game.pause && game.running && !from_on_visible_event) {
             game.pause_modal.style.visibility = "hidden";
             game.pause = false;
             game.interval = setInterval(game.on_move, game.speed);
@@ -141,3 +141,25 @@ export const user_input = {
     /* ------------------- METHODES ----------------- */
 };
 
+/*
+*DOCUMENTATION
+
+TODO avant de compléter la documentation de ce fichier corriger le bug sur la touche Q & D détailler dans le readme.md
+
+*DESCRIPTION DES PROPRIETES: (4)
+- last_keypress_value:
+- keydown_flag: 
+- keyup_flag:
+- spin_index:
+
+*DESCRIPTION DES METHODES: (8)
+- add_key_event(): 
+- remove_key_event(): 
+- on_key_press_handler(): 
+- on_key_down_handler(): 
+- on_key_up_handler(): 
+- on_visibility_change_page_event_handler(): 
+- can_current_piece_move(): 
+- manage_pause(): 
+
+*/

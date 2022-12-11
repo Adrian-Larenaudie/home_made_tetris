@@ -17,4 +17,14 @@ Dans chaque module toutes les propriétés et méthodes sont fortement document�
 
 -> ajouter la pause  
 
--> écrire la documentation pour chaque fichier  
+-> écrire la documentation pour chaque fichier reste:
+    -> user_input.js
+    -> spin.js
+    -> scoring.js
+    -> line.js
+
+-> améliorer le comportement sur les inputs 'Q' & 'D':
+    lorsque l'utilisateur appuie rapidement sur la touche 'Q' puis 'D' puis 'Q' puis 'D' etc.
+    la pièce reste au même niveau
+    le comportement souhaité est le suivant:
+    la pièce doit descendre d'une case au changement de direction

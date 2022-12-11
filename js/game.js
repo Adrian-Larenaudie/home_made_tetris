@@ -118,23 +118,26 @@ Les propriétés vont nous permettre de déterminer un état et les méthodes de
 
 *DESCRIPTION DES PROPRIETES: (8)
 
+- running: booléen qui détermine si la partie estr en cours à (true) ou non à (false)
 - over,  booléen qui détermine si la partie est terminée ou non
 - interval: ui va recevoir le setInterval du jeu (permet de gérer le parcourt d'une pièce jusqu'à son positionnement)
 - speed: définit la vitesse de déplacement de la pièce (du set interval)
 - end_positions: regroupe les positions de la dernière ligne de la grille
 - button: reçoit l'élément du DOM qui permet de lancé la partie lors du clique sur ce dernie
 - modal: reçoit l'élément du DOM qui contient la boite modale affiché en début et fin de partie
-TODO - pause_modal: reçoit l'élément du DOM qui contient la boite modale affichée lors d'une pause
-TODO - pause: booléen qui définit si la pause est activée ou non
+- pause_modal: reçoit l'élément du DOM qui contient la boite modale affichée lors d'une pause
+- pause: booléen qui définit si la pause est activée ou non
 
 *DESCRIPTION DES METHODES: (3)
 
 - init() permet d'initialiser une partie, on va y appeler plusieurs méthodes et effectuer différentes actions:
+    - running est passé à false la partie n'est pas lancée
     - initialisation du module scoring.js
     - génération des valeur de la grille et de leurs attributs
     - dessin de la grille dans la balise canva à l'ai des des valeurs générées
     - affichage de la modal de lancemant de partie
     - ajout de l'event click sur le bouton de lancement de partie au click sur ce bouton:
+        - le booléen running passe à true la partie est lancée
         - on clear l'interval précédant (utile dans le cas ou la partie a été relancée)
         - on définit la vitesse du jeu à l'aide des datas
         - on définit les valeurs de la pièce courante: (les valeurs de la pièce sont toutes à null puisque la pièce courante n'a pas encore été générée)
