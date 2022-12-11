@@ -27,3 +27,4 @@ Dans chaque module toutes les propriétés et méthodes sont fortement document�
     la pièce reste au même niveau
     le comportement souhaité est le suivant:
     la pièce doit descendre d'une case au changement de direction
+    
