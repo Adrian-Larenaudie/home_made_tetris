@@ -1,11 +1,11 @@
-# home-made-tetris  
+# Home-made-tetris  
 
 Tetris from scratch en js vanilla  
-Dans chaque module toutes les propriétés et méthodes sont fortement documentés   
+Explications détillées pour chaque propriétés et méthodes pour chaque module  
 
 **liste des TODO :**  
 
--> ajouter des sons  
+-> ajouter des sons:  
     -> musique original  
     -> sur la rotation de piece  
     -> sur la suppression de ligne  
@@ -15,14 +15,14 @@ Dans chaque module toutes les propriétés et méthodes sont fortement document�
     -> sur la rotation de pièce  
     -> sur le décalage de pièce  
 
--> écrire la documentation pour chaque fichier reste:
-    -> /core/user_input.js
-    -> /core/scoring.js
-    -> /utils/song.js
+-> écrire la documentation pour chaque fichier reste:  
+    -> /core/user_input.js  
+    -> /core/scoring.js  
+    -> /utils/song.js  
 
--> améliorer le comportement sur les inputs 'Q' & 'D':
-    lorsque l'utilisateur appuie rapidement sur la touche 'Q' puis 'D' puis 'Q' puis 'D' etc.
-    la pièce reste au même niveau
-    le comportement souhaité est le suivant:
-    la pièce doit descendre d'une case au changement de direction
+-> améliorer le comportement sur les inputs 'Q' & 'D':  
+    lorsque l'utilisateur appuie rapidement sur la touche 'Q' puis 'D' puis 'Q' puis 'D' etc.  
+    la pièce reste au même niveau  
+    le comportement souhaité est le suivant:  
+    la pièce doit descendre d'une case au changement de direction  
     
