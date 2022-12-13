@@ -1,7 +1,7 @@
 # Home-made-tetris  
 
 Tetris from scratch en js vanilla  
-Explications détillées pour chaque propriétés et méthodes pour chaque module  
+Explications détaillées pour chaque propriétés et méthodes pour chaque module  
 
 **liste des TODO :**  
 
