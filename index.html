@@ -10,72 +10,89 @@
 
 <body>
 
-    <!-- Les deux bloques pour gérer l'activation des bruitage et de la musique -->
-        <div class="img_bloc">
-            <div class="img_bloc__music">
-                <p>Music: (WIP)</p>
-                <div class="song_on music_on">
-                    <svg class="ear_img" width="28px" height="28px" viewBox="0 0 28 28" fill="white" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M6.48542 18.6893L13.0821 25.1703C14.8862 26.9427 17.971 25.6874 17.971 23.1808V4.81925C17.971 2.3126 14.8862 1.05725 13.0821 2.82973L6.48542 9.31065H3.43958C2.09223 9.31065 1 10.3837 1 11.7074V16.2926C1 17.6163 2.09224 18.6893 3.43958 18.6893H6.48542ZM7.58159 16.8188L14.5821 23.6966C15.0499 24.1561 15.8496 23.8306 15.8496 23.1808V4.81925C15.8496 4.16938 15.0499 3.84392 14.5821 4.30345L7.58159 11.1812C7.44234 11.318 7.36412 11.5035 7.36412 11.697V16.303C7.36412 16.4965 7.44234 16.682 7.58159 16.8188ZM5.24275 11.3948H3.43958C3.26384 11.3948 3.12137 11.5348 3.12137 11.7074V16.2926C3.12137 16.4652 3.26384 16.6052 3.43958 16.6052H5.24275V11.3948Z" fill="white" fill-rule="evenodd"/><path d="M22.7437 22.3364C22.2813 21.9831 22.2015 21.3302 22.5283 20.8526C25.3157 16.7793 25.9181 11.5645 22.7053 7.69395C22.3351 7.24793 22.3295 6.59119 22.7437 6.18423C23.158 5.77727 23.835 5.77583 24.214 6.21465C28.3909 11.0506 27.4383 17.4771 24.2055 22.1342C23.8755 22.6097 23.2061 22.6898 22.7437 22.3364Z" fill="white"/><path d="M20.8216 13.6463C20.7817 12.5486 20.5055 11.6062 20.1251 10.9429C19.8376 10.4415 19.7402 9.77098 20.0917 9.31056C20.4431 8.85015 21.1179 8.75448 21.4848 9.20319C22.411 10.3362 22.884 11.9871 22.9416 13.5719C23.0032 15.266 22.6045 17.1437 21.5255 18.631C21.1855 19.0996 20.5059 19.0962 20.0917 18.6893C19.6774 18.2823 19.688 17.6242 19.9906 17.1314C20.5942 16.1482 20.867 14.897 20.8216 13.6463Z" fill="white"/></svg>
+    <!-- message affiche sur un écran trop petit en dessous de 680 -->
+    <h1 class="screen_not_supported">Screen size not supported</h1>
+    <!-- ********************************************************* -->
+
+    <div class="core">
+        <!-- Les trois bloques pour gérer l'activation des bruitage, de la musique et afficher les commandes de jeu -->
+
+            <style>.img_bloc__music, .img_bloc_sound_effects { display: none;} </style>
+
+            <div class="img_bloc">
+
+                <div class="img_bloc_info_panel">
+                    <div class="song_on sound_effects_on">
+                        <svg class="info_img" width="28px" height="28px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g><path d="M7.92,5.32v0A.92.92,0,1,0,7,4.37v0A.92.92,0,0,0,7.92,5.32ZM8.85,6H6.55a4.58,4.58,0,0,1-.1.63,3,3,0,0,1-.2.67h1.3v3.53H6.25v1.3H9.57v-1.3H8.85ZM13,3.05A7,7,0,1,0,13,13,7,7,0,0,0,13,3.05ZM12,12A5.6,5.6,0,0,1,4,12,5.61,5.61,0,0,1,4,4,5.6,5.6,0,0,1,12,4,5.61,5.61,0,0,1,12,12Z"/></g></svg>
+                    </div>
+                </div> 
+
+                <div class="img_bloc__music">
+                    <p>Music: (WIP)</p>
+                    <div class="song_on music_on">
+                        <svg class="ear_img" width="28px" height="28px" viewBox="0 0 28 28" fill="white" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M6.48542 18.6893L13.0821 25.1703C14.8862 26.9427 17.971 25.6874 17.971 23.1808V4.81925C17.971 2.3126 14.8862 1.05725 13.0821 2.82973L6.48542 9.31065H3.43958C2.09223 9.31065 1 10.3837 1 11.7074V16.2926C1 17.6163 2.09224 18.6893 3.43958 18.6893H6.48542ZM7.58159 16.8188L14.5821 23.6966C15.0499 24.1561 15.8496 23.8306 15.8496 23.1808V4.81925C15.8496 4.16938 15.0499 3.84392 14.5821 4.30345L7.58159 11.1812C7.44234 11.318 7.36412 11.5035 7.36412 11.697V16.303C7.36412 16.4965 7.44234 16.682 7.58159 16.8188ZM5.24275 11.3948H3.43958C3.26384 11.3948 3.12137 11.5348 3.12137 11.7074V16.2926C3.12137 16.4652 3.26384 16.6052 3.43958 16.6052H5.24275V11.3948Z" fill="white" fill-rule="evenodd"/><path d="M22.7437 22.3364C22.2813 21.9831 22.2015 21.3302 22.5283 20.8526C25.3157 16.7793 25.9181 11.5645 22.7053 7.69395C22.3351 7.24793 22.3295 6.59119 22.7437 6.18423C23.158 5.77727 23.835 5.77583 24.214 6.21465C28.3909 11.0506 27.4383 17.4771 24.2055 22.1342C23.8755 22.6097 23.2061 22.6898 22.7437 22.3364Z" fill="white"/><path d="M20.8216 13.6463C20.7817 12.5486 20.5055 11.6062 20.1251 10.9429C19.8376 10.4415 19.7402 9.77098 20.0917 9.31056C20.4431 8.85015 21.1179 8.75448 21.4848 9.20319C22.411 10.3362 22.884 11.9871 22.9416 13.5719C23.0032 15.266 22.6045 17.1437 21.5255 18.631C21.1855 19.0996 20.5059 19.0962 20.0917 18.6893C19.6774 18.2823 19.688 17.6242 19.9906 17.1314C20.5942 16.1482 20.867 14.897 20.8216 13.6463Z" fill="white"/></svg>
+                    </div>
+                    <div class="song_off music_off">
+                        <svg class="ear_img" fill="white" width="30px" height="30px" viewBox="-1 -3 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-volume-mute"><path d='M12 2h-.6a2 2 0 0 0-1.444.617L6.239 6.5H2v5h4.239l3.717 3.883A2 2 0 0 0 11.4 16H12V2zM5.385 4.5L8.51 1.234A4 4 0 0 1 11.401 0H13a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-1.6a4 4 0 0 1-2.889-1.234L5.385 13.5H2a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h3.385zM19.415 9l1.413 1.414a1 1 0 1 1-1.414 1.414L18 10.414l-1.414 1.414a1 1 0 1 1-1.414-1.414L16.586 9l-1.414-1.414a1 1 0 0 1 1.414-1.414L18 7.586l1.414-1.414a1 1 0 1 1 1.414 1.414L19.414 9z' /></svg>
+                    </div>
                 </div>
-                <div class="song_off music_off">
-                    <svg class="ear_img" fill="white" width="30px" height="30px" viewBox="-1 -3 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-volume-mute"><path d='M12 2h-.6a2 2 0 0 0-1.444.617L6.239 6.5H2v5h4.239l3.717 3.883A2 2 0 0 0 11.4 16H12V2zM5.385 4.5L8.51 1.234A4 4 0 0 1 11.401 0H13a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-1.6a4 4 0 0 1-2.889-1.234L5.385 13.5H2a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h3.385zM19.415 9l1.413 1.414a1 1 0 1 1-1.414 1.414L18 10.414l-1.414 1.414a1 1 0 1 1-1.414-1.414L16.586 9l-1.414-1.414a1 1 0 0 1 1.414-1.414L18 7.586l1.414-1.414a1 1 0 1 1 1.414 1.414L19.414 9z' /></svg>
-                </div>
+
+                <div class="img_bloc_sound_effects">
+                    <p>Sound effects: (WIP)</p>
+                    <div class="song_on sound_effects_on">
+                        <svg class="ear_img" width="28px" height="28px" viewBox="0 0 28 28" fill="white" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M6.48542 18.6893L13.0821 25.1703C14.8862 26.9427 17.971 25.6874 17.971 23.1808V4.81925C17.971 2.3126 14.8862 1.05725 13.0821 2.82973L6.48542 9.31065H3.43958C2.09223 9.31065 1 10.3837 1 11.7074V16.2926C1 17.6163 2.09224 18.6893 3.43958 18.6893H6.48542ZM7.58159 16.8188L14.5821 23.6966C15.0499 24.1561 15.8496 23.8306 15.8496 23.1808V4.81925C15.8496 4.16938 15.0499 3.84392 14.5821 4.30345L7.58159 11.1812C7.44234 11.318 7.36412 11.5035 7.36412 11.697V16.303C7.36412 16.4965 7.44234 16.682 7.58159 16.8188ZM5.24275 11.3948H3.43958C3.26384 11.3948 3.12137 11.5348 3.12137 11.7074V16.2926C3.12137 16.4652 3.26384 16.6052 3.43958 16.6052H5.24275V11.3948Z" fill="white" fill-rule="evenodd"/><path d="M22.7437 22.3364C22.2813 21.9831 22.2015 21.3302 22.5283 20.8526C25.3157 16.7793 25.9181 11.5645 22.7053 7.69395C22.3351 7.24793 22.3295 6.59119 22.7437 6.18423C23.158 5.77727 23.835 5.77583 24.214 6.21465C28.3909 11.0506 27.4383 17.4771 24.2055 22.1342C23.8755 22.6097 23.2061 22.6898 22.7437 22.3364Z" fill="white"/><path d="M20.8216 13.6463C20.7817 12.5486 20.5055 11.6062 20.1251 10.9429C19.8376 10.4415 19.7402 9.77098 20.0917 9.31056C20.4431 8.85015 21.1179 8.75448 21.4848 9.20319C22.411 10.3362 22.884 11.9871 22.9416 13.5719C23.0032 15.266 22.6045 17.1437 21.5255 18.631C21.1855 19.0996 20.5059 19.0962 20.0917 18.6893C19.6774 18.2823 19.688 17.6242 19.9906 17.1314C20.5942 16.1482 20.867 14.897 20.8216 13.6463Z" fill="white"/></svg>
+                    </div>
+                    <div class="song_off sound_effects_off">
+                        <svg class="ear_img" fill="white" width="30px" height="30px" viewBox="-1 -3 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-volume-mute"><path d='M12 2h-.6a2 2 0 0 0-1.444.617L6.239 6.5H2v5h4.239l3.717 3.883A2 2 0 0 0 11.4 16H12V2zM5.385 4.5L8.51 1.234A4 4 0 0 1 11.401 0H13a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-1.6a4 4 0 0 1-2.889-1.234L5.385 13.5H2a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h3.385zM19.415 9l1.413 1.414a1 1 0 1 1-1.414 1.414L18 10.414l-1.414 1.414a1 1 0 1 1-1.414-1.414L16.586 9l-1.414-1.414a1 1 0 0 1 1.414-1.414L18 7.586l1.414-1.414a1 1 0 1 1 1.414 1.414L19.414 9z' /></svg>
+                    </div>
+                </div>  
+ 
             </div>
+        <!--  -->
 
-            <div class="img_bloc_sound_effects">
-                <p>Sound effects: (WIP)</p>
-                <div class="song_on sound_effects_on">
-                    <svg class="ear_img" width="28px" height="28px" viewBox="0 0 28 28" fill="white" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M6.48542 18.6893L13.0821 25.1703C14.8862 26.9427 17.971 25.6874 17.971 23.1808V4.81925C17.971 2.3126 14.8862 1.05725 13.0821 2.82973L6.48542 9.31065H3.43958C2.09223 9.31065 1 10.3837 1 11.7074V16.2926C1 17.6163 2.09224 18.6893 3.43958 18.6893H6.48542ZM7.58159 16.8188L14.5821 23.6966C15.0499 24.1561 15.8496 23.8306 15.8496 23.1808V4.81925C15.8496 4.16938 15.0499 3.84392 14.5821 4.30345L7.58159 11.1812C7.44234 11.318 7.36412 11.5035 7.36412 11.697V16.303C7.36412 16.4965 7.44234 16.682 7.58159 16.8188ZM5.24275 11.3948H3.43958C3.26384 11.3948 3.12137 11.5348 3.12137 11.7074V16.2926C3.12137 16.4652 3.26384 16.6052 3.43958 16.6052H5.24275V11.3948Z" fill="white" fill-rule="evenodd"/><path d="M22.7437 22.3364C22.2813 21.9831 22.2015 21.3302 22.5283 20.8526C25.3157 16.7793 25.9181 11.5645 22.7053 7.69395C22.3351 7.24793 22.3295 6.59119 22.7437 6.18423C23.158 5.77727 23.835 5.77583 24.214 6.21465C28.3909 11.0506 27.4383 17.4771 24.2055 22.1342C23.8755 22.6097 23.2061 22.6898 22.7437 22.3364Z" fill="white"/><path d="M20.8216 13.6463C20.7817 12.5486 20.5055 11.6062 20.1251 10.9429C19.8376 10.4415 19.7402 9.77098 20.0917 9.31056C20.4431 8.85015 21.1179 8.75448 21.4848 9.20319C22.411 10.3362 22.884 11.9871 22.9416 13.5719C23.0032 15.266 22.6045 17.1437 21.5255 18.631C21.1855 19.0996 20.5059 19.0962 20.0917 18.6893C19.6774 18.2823 19.688 17.6242 19.9906 17.1314C20.5942 16.1482 20.867 14.897 20.8216 13.6463Z" fill="white"/></svg>
+        <!-- main contient le titre les scores et la grille de jeu  -->
+            <main>
+                <h1 class="title">Tetris Game</h1>
+                <div class="center_block">
+                    <canvas height="682px" width="310px"></canvas>
+                    <div class="score_tags">
+                        <h1 class="title_bis">Tetris Game</h1>
+                        <p class="score">current score: <span class="current_score_value">0</span></p>
+                        <p class="score">lines: <span class="completed_lines_value">0</span></p>
+                        <p class="score">best score: <span class="best_score_value">0</span></p>
+                        <p class="score">max lines: <span class="max_completed_lines_value">0</span></p>
+                    </div>
                 </div>
-                <div class="song_off sound_effects_off">
-                    <svg class="ear_img" fill="white" width="30px" height="30px" viewBox="-1 -3 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-volume-mute"><path d='M12 2h-.6a2 2 0 0 0-1.444.617L6.239 6.5H2v5h4.239l3.717 3.883A2 2 0 0 0 11.4 16H12V2zM5.385 4.5L8.51 1.234A4 4 0 0 1 11.401 0H13a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-1.6a4 4 0 0 1-2.889-1.234L5.385 13.5H2a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h3.385zM19.415 9l1.413 1.414a1 1 0 1 1-1.414 1.414L18 10.414l-1.414 1.414a1 1 0 1 1-1.414-1.414L16.586 9l-1.414-1.414a1 1 0 0 1 1.414-1.414L18 7.586l1.414-1.414a1 1 0 1 1 1.414 1.414L19.414 9z' /></svg>
-                </div>
-            </div>  
-        </div>
-    <!--  -->
+            </main>
+        <!--  -->
 
-    <!-- main contient le titre les scores et la grille de jeu  -->
-        <main>
-
-            <h1 class="title">Tetris Game</h1>
-            <h2 class="score">work in progress be indulgent</h2>
-            <canvas height="682px" width="310px"></canvas>
-            <div class="score_tags">
-                <p class="score">current score: <span class="current_score_value">0</span></p>
-                <p class="score">completed lines: <span class="completed_lines_value">0</span></p>
-                <p class="score">best score: <span class="best_score_value">0</span></p>
-                <p class="score">max completed lines: <span class="max_completed_lines_value">0</span></p>
+        <!-- la side part qui contient les instruction concernant les inputs -->
+            <div class="side_how_to_play_panel">
+                <h3>How to play</h1>
+                    <p>Left:    Q</p>
+                    <p>Right:   D</p>
+                    <p>Speed:   S</p>
+                    <p>Spin:    Z</p>
+                    <p>Pause:   spacebar</p>
             </div>
+        <!--  -->
 
-        </main>
-    <!--  -->
+        <!-- la modal affichée en début et fin de partie -->
+            <div class="modal">
+                <h1 class="modal_title">TeTris</h1>
+                <a class="launch_button">Click here to start game</a>
+                <p class="end_game_score"></p>
+            </div>
+        <!--  -->
 
-    <!-- la side part qui contient les instruction concernant les inputs -->
-        <div class="side_how_to_play_panel">
-            <h3>How to play</h1>
-                <p>Left:    Q</p>
-                <p>Right:   D</p>
-                <p>Speed:   S</p>
-                <p>Spin:    Z</p>
-                <p>Pause:   spacebar</p>
-        </div>
-    <!--  -->
+        <!-- la modal affichée lorsque la pause est activée -->
+            <div class="modal_pause">
+                <h1 class="modal_title">Pause</h1>
+            </div>
+        <!--  -->
+    </div>
 
-    <!-- la modal affichée en début et fin de partie -->
-        <div class="modal">
-            <h1 class="modal_title">TeTris</h1>
-            <a class="launch_button">Click here to start game</a>
-            <p class="end_game_score"></p>
-        </div>
-    <!--  -->
-
-    <!-- la modal affichée lorsque la pause est activée -->
-        <div class="modal_pause">
-            <h1 class="modal_title">Pause</h1>
-        </div>
-    <!--  -->
-
-    <script src="./js/game.js" type="module"></script>
+    <script src="./js/index.js" type="module"></script>
     
 </body>
 </html>

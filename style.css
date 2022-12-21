@@ -1,6 +1,13 @@
 body {
     background-color: #1b1b1b;
     margin: 0;
+    overflow: hidden;
+}
+
+.screen_not_supported {
+    display: none;
+    color: #fff;
+    text-align: center;
 }
 
 main {
@@ -16,12 +23,24 @@ main {
     color: white;
 }
 
+.title_bis {
+    display: none;
+}
+
+.center_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 canvas {
     background-color: grey;
 }
 
 .score_tags {
     display: flex;
+    margin-top: 2rem;
 }
 
 p span {
@@ -40,7 +59,7 @@ p span {
     height: 100%;
     text-align: center;
     z-index: 42;
-    background-color:rgba(0, 0, 0, 0.8);;
+    background-color:rgba(0, 0, 0, 0.95);;
   }
 
 .modal_pause {
@@ -51,7 +70,7 @@ p span {
     cursor: pointer;
     color: white;
     font-size: 2rem;
-    text-shadow: 4px 1px 18px rgba(0,0,0,0.81);
+    text-shadow: 4px 1px 18px rgba(0,0,0,0.95);
     transition: 0.1s;
 }
 
@@ -93,12 +112,15 @@ p span {
 .side_how_to_play_panel {
     color: white;
     position: absolute;
-    top: 5rem;
-    left: 5rem;
     z-index: 43;
     border: solid 2px white;
     padding: 1rem;
     border-radius: 0.2rem;
+    left: auto;
+    right: -11rem;
+    top: 4rem;
+    background: #1b1b1b;
+    transition: .7s;
 }
 
 .side_how_to_play_panel h3, .side_how_to_play_panel p {
@@ -118,4 +140,44 @@ p span {
 }
 .img_bloc__music, .img_bloc_sound_effects {
     margin-right: 1rem;
+}
+
+.slide_animation_panel {  
+    transform: translateX(-105%);
+} 
+
+.info_img {
+    display: block;
+    margin-right: 1rem;
+    fill: white;
+}
+
+.info_img:hover {
+    cursor: pointer;
+}
+
+@media (max-height: 830px) {
+    .title {
+        display: none;
+    }
+
+    .title_bis {
+        color: #fff;
+        display: block;
+    }
+
+    .center_block {
+        flex-direction: row;
+    }
+
+    .score_tags {
+        margin: 1rem;
+        order: -1;
+        flex-direction: column;
+        align-self: flex-start;
+    }
+
+    canvas {
+        margin-top: 2rem;
+    }
 }
