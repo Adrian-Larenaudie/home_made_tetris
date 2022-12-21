@@ -11,10 +11,6 @@ Explications détaillées pour chaque propriétés et méthodes pour chaque modu
     -> sur la suppression de ligne  
     -> sur la positionnement d'une pièce  
 
--> amélioration de la fluiditer des inputs user:  
-    -> sur la rotation de pièce  
-    -> sur le décalage de pièce  
-
 -> écrire la documentation pour chaque fichier reste:  
     -> /core/user_input.js  
     -> /core/scoring.js  
@@ -25,8 +21,4 @@ Explications détaillées pour chaque propriétés et méthodes pour chaque modu
     la pièce reste au même niveau  
     le comportement souhaité est le suivant:  
     la pièce doit descendre d'une case au changement de direction  
-<<<<<<< HEAD
-    
-=======
-    
->>>>>>> cfaf88c085298065129b7a27a8671aace0953ee7
+
