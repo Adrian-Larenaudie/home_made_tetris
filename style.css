@@ -1,4 +1,13 @@
+@font-face {
+    font-family: 'Jet Brains Mono';
+    src: url('./fonts/JetBrainsMono-Bold.ttf') format('truetype');
+    src: url('./fonts/JetBrainsMono-ExtraBold.ttf') format('truetype');
+    src: url('./fonts/JetBrainsMono-ExtraLight.ttf') format('truetype');
+    src: url('./fonts/JetBrainsMono-Light.ttf') format('truetype');
+}
+
 body {
+    font-family: 'Jet Brains Mono', sans-serif;
     background-color: #1b1b1b;
     margin: 0;
     overflow: hidden;
@@ -117,7 +126,7 @@ p span {
     padding: 1rem;
     border-radius: 0.2rem;
     left: auto;
-    right: -11rem;
+    right: -12.5rem;
     top: 4rem;
     background: #1b1b1b;
     transition: .7s;
