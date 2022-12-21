@@ -1,11 +1,11 @@
-# home-made-tetris  
+# Home-made-tetris  
 
 Tetris from scratch en js vanilla  
-Dans chaque module toutes les propriétés et méthodes sont fortement documentés   
+Explications détaillées pour chaque propriétés et méthodes pour chaque module  
 
 **liste des TODO :**  
 
--> ajouter des sons  
+-> ajouter des sons:  
     -> musique original  
     -> sur la rotation de piece  
     -> sur la suppression de ligne  
@@ -25,4 +25,8 @@ Dans chaque module toutes les propriétés et méthodes sont fortement document�
     la pièce reste au même niveau  
     le comportement souhaité est le suivant:  
     la pièce doit descendre d'une case au changement de direction  
+<<<<<<< HEAD
     
+=======
+    
+>>>>>>> cfaf88c085298065129b7a27a8671aace0953ee7
